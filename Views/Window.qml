@@ -8,43 +8,43 @@ Window
 {
     property var manager: new Manager.Manager(root)
 
-	id: root
+    id: root
 
-	Button {
-	    id: buttonStart
-	    x: 50
-	    y: 25
-	    buttonWidth: 100
-	    buttonHeight: 50
-	    buttonId: Manager.HandleButtons.Start
-	    buttonText: Manager.HandleButtons.Start
-	}
+    Button {
+        id: buttonStart
+        x: 50
+        y: 25
+        buttonWidth: 100
+        buttonHeight: 50
+        buttonId: Manager.HandleButtons.Start
+        buttonText: Manager.HandleButtons.Start
+    }
 
-     Button {
-	     id: buttonLoad
-	     x: 175
-	     y: 25
-	     buttonWidth: 100
-	     buttonHeight: 50
-	     buttonId: Manager.HandleButtons.Load
-	     buttonText: Manager.HandleButtons.Load
-	     onClick: manager.loadGame()
-	 }
+    Button {
+        id: buttonLoad
+        x: 175
+        y: 25
+        buttonWidth: 100
+        buttonHeight: 50
+        buttonId: Manager.HandleButtons.Load
+        buttonText: Manager.HandleButtons.Load
+        onClick: manager.loadGame()
+    }
 
-     Button {
-	     id: buttonSave
-	     x: 300
-	     y: 25
-	     buttonWidth: 100
-	     buttonHeight: 50
-	     buttonId: Manager.HandleButtons.Save
-	     buttonText: Manager.HandleButtons.Save
-	     opacity: 0
-	     onClick: opacity && manager.saveGame()
-	 }
+    Button {
+        id: buttonSave
+        x: 300
+        y: 25
+        buttonWidth: 100
+        buttonHeight: 50
+        buttonId: Manager.HandleButtons.Save
+        buttonText: Manager.HandleButtons.Save
+        opacity: 0
+        onClick: opacity && manager.saveGame()
+    }
 
-	StateMachine {
-	    id: stateMachine
+    StateMachine {
+        id: stateMachine
         running: true
         initialState: unStarted
 
@@ -56,9 +56,9 @@ Window
             }
 
             SignalTransition {
-				targetState: started
-				signal: root.start
-			}
+                targetState: started
+                signal: root.start
+            }
         }
 
         State {
@@ -73,19 +73,19 @@ Window
             }
 
             SignalTransition {
-				targetState: unStarted
-				signal: buttonStart.click
-			}
+                targetState: unStarted
+                signal: buttonStart.click
+            }
 
             SignalTransition {
-				targetState: won
-				signal: root.win
-			}
+                targetState: won
+                signal: root.win
+            }
 
             SignalTransition {
-				targetState: lost
-				signal: root.lost
-			}
+                targetState: lost
+                signal: root.lost
+            }
         }
 
         State {
@@ -95,9 +95,9 @@ Window
             }
 
             SignalTransition {
-				targetState: unStarted
-				signal: buttonStart.click
-			}
+                targetState: unStarted
+                signal: buttonStart.click
+            }
         }
 
         State {
@@ -107,13 +107,13 @@ Window
             }
 
             SignalTransition {
-				targetState: unStarted
-				signal: buttonStart.click
-			}
+                targetState: unStarted
+                signal: buttonStart.click
+            }
         }
-	}
+    }
 
-	signal start()
-	signal win()
-	signal lost()
+    signal start()
+    signal win()
+    signal lost()
 }
